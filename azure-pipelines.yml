@@ -9,18 +9,17 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
   
-steps:
+steps:  
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
+    projects: '- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
     projects: 'C#/**/*.csproj'
+    arguments: '--configurationRelease''
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-    projects: 'C#/src/src.csproj'
-    arguments: '--configuration Release --output $(System.DefaultWorkingDirectory)/publish_output'
-- task: DotNetCoreCLI@2
-  inputs:
     command: 'test'
-    projects: 'C#/tests/tests.csproj'
+    projects: 'C#/test/test.csproj'
