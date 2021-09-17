@@ -16,10 +16,10 @@ steps:
     projects: '- task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'C#/**/*.csproj'
+    projects: 'california'
     arguments: '--configurationRelease''
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'C#/test/test.csproj'
+    projects: 'california.csproj'
